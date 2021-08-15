@@ -1,6 +1,8 @@
 import argparse
 import os
 from pathlib import Path
+import yaml
+import pprint as pp
 
 parser = argparse.ArgumentParser('Combine a set of yaml files into one')
 
@@ -34,6 +36,16 @@ def main():
 
 	if Path.exists(target):
 		raise FileExistsError(target)
+
+	# List files in confdir and sort alphabetically
+	conf_files = sorted(
+		[Path(filename) for filename in confdir.iterdir()],
+		key=lambda f: f.name)
+
+	for filename in conf_files:
+		with open(filename) as file:
+			yaml_data = yaml.safe_load(file)
+			pp.PrettyPrinter(indent=4).pprint(yaml_data)
 
 if __name__ == '__main__':
 	main()
