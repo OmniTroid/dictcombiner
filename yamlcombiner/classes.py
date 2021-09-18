@@ -16,4 +16,3 @@ class YamlCombiner:
 
 		if not self.sub_yml_dir.is_dir():
 			raise NotADirectoryError(self.sub_yml_dir)
-
