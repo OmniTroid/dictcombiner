@@ -2,8 +2,7 @@ import pytest
 import os
 from pathlib import Path
 
-
-import yamlcombiner as yc
+import dictcombiner as dc
 
 def test_trivial():
 	script_dir = Path(__file__).parent.resolve()
