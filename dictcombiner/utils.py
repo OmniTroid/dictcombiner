@@ -16,12 +16,10 @@ def modify_result_dict(result_dict : dict, tree_path : [str], value):
 	modify_result_dict(result_dict[key], tree_path[1:], value)
 
 def traverse(result_dict : dict, sub_dict : dict, tree_path : [str]):
-	print('traverse')
 	for key, value in sub_dict.items():
 		new_tree_path = copy.deepcopy(tree_path)
 		new_tree_path.append(key)
 		if type(value) is not dict:
-			print('Modifying result_dict')
 			modify_result_dict(result_dict, new_tree_path, value)
 		else:
 			traverse(result_dict, sub_dict[key], new_tree_path)
