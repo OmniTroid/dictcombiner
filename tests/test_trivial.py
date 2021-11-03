@@ -8,7 +8,6 @@ def test_trivial():
 	script_dir = Path(__file__).parent.resolve()
 	base_yml = Path(script_dir, 'testdata', 'base.yml')
 	sub_yml_dir = Path(script_dir, 'testdata', 'sub')
-	combiner = yc.YamlCombiner(base_yml, sub_yml_dir)
 
 def test_combine_dicts():
 	base_dict = {
@@ -43,6 +42,6 @@ def test_combine_dicts():
 		}
 	}
 
-	result_dict = yc.utils.combine_dicts(base_dict, sub_dicts)
+	result_dict = dc.utils.combine_dicts(base_dict, sub_dicts)
 
 	assert result_dict == expected_result_dict
