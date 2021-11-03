@@ -4,22 +4,16 @@ from pathlib import Path
 
 import dictcombiner as dc
 
-def test_trivial():
-	script_dir = Path(__file__).parent.resolve()
-	base_yml = Path(script_dir, 'testdata', 'base.yml')
-	sub_yml_dir = Path(script_dir, 'testdata', 'sub')
-
-def test_combine_dicts():
-	base_dict = {
+def test_simple_combine():
+	dicts = [
+	{
 		'config': 15,
 		'settings': {
 			'a': 1,
 			'b': 2,
 			'c': 3
 		}
-	}
-
-	sub_dicts = [
+	},
 	{
 		'settings': {
 			'a': 2,
@@ -42,6 +36,37 @@ def test_combine_dicts():
 		}
 	}
 
-	result_dict = dc.utils.combine_dicts(base_dict, sub_dicts)
+	result_dict = dc.utils.combine_dicts(dicts)
 
 	assert result_dict == expected_result_dict
+
+def test_deep_nesting():
+	dicts = [
+	{
+		'a':{
+			'b':{
+				'c':{
+					'd': 1
+				}
+			}
+		}
+	},
+	{
+		'a':{
+			'b':{
+				'c':{
+					'd': 2
+				}
+			},
+			'b2':{
+				'c2': 3
+			}
+		}
+	},
+
+	]
+
+	result_dict = dc.utils.combine_dicts(dicts)
+
+	assert result_dict['a']['b']['c']['d'] == 2
+	assert result_dict['a']['b2']['c2'] == 3
