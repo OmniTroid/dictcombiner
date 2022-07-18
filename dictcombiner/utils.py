@@ -1,5 +1,6 @@
 import copy
 
+
 # Modifies the given result dicts value given by tree_path to value
 def modify_result_dict(result_dict : dict, tree_path : [str], value):
 	key = tree_path[0]
@@ -13,7 +14,8 @@ def modify_result_dict(result_dict : dict, tree_path : [str], value):
 
 	modify_result_dict(result_dict[key], tree_path[1:], value)
 
-def traverse(result_dict : dict, sub_dict : dict, tree_path : [str]):
+
+def traverse(result_dict: dict, sub_dict: dict, tree_path: [str]):
 	for key, value in sub_dict.items():
 		new_tree_path = copy.deepcopy(tree_path)
 		new_tree_path.append(key)
@@ -22,8 +24,9 @@ def traverse(result_dict : dict, sub_dict : dict, tree_path : [str]):
 		else:
 			traverse(result_dict, sub_dict[key], new_tree_path)
 
+
 # Combine a set of sub dicts into a result dict
-def combine_dicts(dicts : [dict]):
+def combine_dicts(dicts: [dict]):
 	result_dict = {}
 
 	for dict_ in dicts:
