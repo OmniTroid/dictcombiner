@@ -1,26 +1,20 @@
-import pytest
-import os
-from pathlib import Path
-
 import dictcombiner as dc
 
+
 def test_simple_combine():
-	dicts = [
-	{
+	dicts = [{
 		'config': 15,
 		'settings': {
 			'a': 1,
 			'b': 2,
 			'c': 3
 		}
-	},
-	{
+	}, {
 		'settings': {
 			'a': 2,
 			'b': 3
 		}
-	},
-	{
+	}, {
 		'settings': {
 			'a': 5
 		}
@@ -40,25 +34,26 @@ def test_simple_combine():
 
 	assert result_dict == expected_result_dict
 
+
 def test_deep_nesting():
 	dicts = [
 	{
-		'a':{
-			'b':{
-				'c':{
+		'a': {
+			'b': {
+				'c': {
 					'd': 1
 				}
 			}
 		}
 	},
 	{
-		'a':{
-			'b':{
-				'c':{
+		'a': {
+			'b': {
+				'c': {
 					'd': 2
 				}
 			},
-			'b2':{
+			'b2': {
 				'c2': 3
 			}
 		}
