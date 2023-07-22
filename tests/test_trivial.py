@@ -65,3 +65,28 @@ def test_deep_nesting():
 
 	assert result_dict['a']['b']['c']['d'] == 2
 	assert result_dict['a']['b2']['c2'] == 3
+
+
+def test_combine_empty_dicts():
+	dict_a = {
+		"dicts": {
+			"a": {},
+			"b": {},
+			"c": {}
+		}
+	}
+
+	dict_b = {
+		"dicts": {}
+	}
+
+	expected_result = {
+		"dicts": {
+			"a": {},
+			"b": {},
+			"c": {}
+		}
+	}
+
+	result_dict = dc.utils.combine_dicts([dict_a, dict_b])
+	assert result_dict['dicts'] == expected_result['dicts']
