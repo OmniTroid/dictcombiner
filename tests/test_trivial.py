@@ -30,7 +30,7 @@ def test_simple_merge():
         }
     }
 
-    result_dict = dc.utils.merge_many_dicts(dicts)
+    result_dict = dc.utils.merge_dicts(dicts)
 
     assert result_dict == expected_result_dict
 
@@ -61,7 +61,7 @@ def test_deep_nesting():
 
     ]
 
-    result_dict = dc.utils.merge_many_dicts(dicts)
+    result_dict = dc.utils.merge_dicts(dicts)
 
     assert result_dict['a']['b']['c']['d'] == 2
     assert result_dict['a']['b2']['c2'] == 3
@@ -86,7 +86,7 @@ def test_combine_empty_dicts():
         }
     }
 
-    result_dict = dc.utils.merge_many_dicts([dict_a, dict_b])
+    result_dict = dc.utils.merge_dicts([dict_a, dict_b])
     assert result_dict['dicts'] == expected_result['dicts']
 
 

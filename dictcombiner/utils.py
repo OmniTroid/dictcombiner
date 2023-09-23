@@ -24,9 +24,9 @@ def merge_two_dicts(dict_a: dict, dict_b: dict) -> dict:
 
 
 # Combine a list of dicts into a result dict
-def merge_many_dicts(dicts: [dict]) -> dict:
+def merge_dicts(dicts: [dict]) -> dict:
 	if len(dicts) == 1:
 		return dicts[0]
 
 	last_dict = dicts.pop()
-	return merge_two_dicts(merge_many_dicts(dicts), last_dict)
+	return merge_two_dicts(merge_dicts(dicts), last_dict)
